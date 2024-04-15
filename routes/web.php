@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     DebugBar::info('Showing the Message!');
+
     return view('welcome');
 
-    });
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

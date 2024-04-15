@@ -23,7 +23,7 @@ class NoteFactory extends Factory
             'image_path' => $this->faker->imageUrl(640, 480),
             'is_published' => 1,
             'time_to_read' => $this->faker->numberBetween(1, 10),
-            'priority' => $this->faker->numberBetween(1,5)
+            'priority' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

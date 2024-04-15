@@ -3,61 +3,52 @@
 namespace Database\Seeders;
 
 use App\Models\Note;
-
 use Illuminate\Database\Seeder;
-
 use Illuminate\Support\Facades\File;
 
 class NotesSeederJSON extends Seeder
-
 {
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
 
-/**
+        Note::truncate();
 
-* Run the database seeds.
+        $json = File::get('database/data/notes.json');
 
-*/
+        $note = json_decode($json);
 
-public function run(): void
+        $note_id = 1;
 
-{
+        foreach ($note as $key => $value) {
 
-Note::truncate();
+            Note::create([
 
-$json = File::get("database/data/notes.json");
+                'user_id' => $value->user_id,
 
-$note = json_decode($json);
+                'title' => $value->title,
 
-$note_id = 1;
+                'body' => $value->body,
 
-foreach ($note as $key => $value) {
+                'image_path' => $value->image_path,
 
-Note::create([
+                'time_to_read' => $value->time_to_read,
 
-"user_id" => $value->user_id,
+                'is_published' => $value->is_published,
 
-"title" => $value->title,
+                'priority' => $value->priority,
 
-"body" => $value->body,
+            ]
 
-"image_path" => $value->image_path,
+            );
 
-"time_to_read" => $value->time_to_read,
+            $this->command->info($note_id.' Seeded and allocated to User:'.$value->user_id);
 
-"is_published" => $value->is_published,
+            $note_id++;
 
-"priority" => $value->priority,
+        }
 
-]
-
-);
-
-$this->command->info($note_id.' Seeded and allocated to User:' . $value->user_id);
-
-$note_id++;
-
-}
-
-}
-
+    }
 }

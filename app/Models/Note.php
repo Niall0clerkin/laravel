@@ -18,5 +18,5 @@ class Note extends Model
         'is_published',
         'priority',
 
-        ];
+    ];
 }
