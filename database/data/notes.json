@@ -1,0 +1,243 @@
+[
+
+    {
+
+    "id": 1,
+
+    "user_id": 1,
+
+    "title": "Yes, it's me!",
+
+    "body": "Taken a very, very long time ago.",
+
+    "image_path": "https://computing.ulster.ac.uk/~B00XXXXXX/images/your_image.png",
+
+    "time_to_read": 7,
+
+    "is_published": 1,
+
+    "priority": 4,
+
+    "created_at": "2023-03-05 10:44:50",
+
+    "updated_at": "2023-03-05 10:44:50"
+
+    },
+
+    {
+
+    "id": 2,
+
+    "user_id": 2,
+
+    "title": "Repudiandae totam labore quisquam ratione est iure.",
+
+    "body": "Aut officiis dolores eligendi et fugit. Assumenda et voluptatem eum vel deserunt. Consectetur totam repudiandae sed. Mollitia omnis neque aut itaque.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/005522?text=eos",
+
+    "time_to_read": 9,
+
+    "is_published": 1,
+
+    "priority": 2,
+
+    "created_at": "2023-03-05 10:44:50",
+
+    "updated_at": "2023-03-05 10:44:50"
+
+    },
+
+    {
+
+    "id": 3,
+
+    "user_id": 2,
+
+    "title": "Cupiditate culpa et velit et sit repellat delectus.",
+
+    "body": "Illo maiores magni sunt eligendi totam laborum. Harum cumque ducimus voluptatem. Voluptatem beatae inventore quisquam iure minima reprehenderit.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/001144?text=rem",
+
+    "time_to_read": 4,
+
+    "is_published": 1,
+
+    "priority": 1,
+
+    "created_at": "2023-03-05 10:44:50",
+
+    "updated_at": "2023-03-05 10:44:50"
+
+    },
+
+    {
+
+    "id": 4,
+
+    "user_id": 1,
+
+    "title": "Aliquid placeat corporis voluptates iste.",
+
+    "body": "Quia eos qui molestias quod ut ratione quae. Qui provident doloremque sunt inventore autem nihil. Voluptate sapiente doloremque est hic. Id sint et consequatur voluptas enim facere dolorum.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/0099cc?text=quasi",
+
+    "time_to_read": 1,
+
+    "is_published": 1,
+
+    "priority": 4,
+
+    "created_at": "2023-03-05 10:44:50",
+
+    "updated_at": "2023-03-05 10:44:50"
+
+    },
+
+    {
+
+    "id": 5,
+
+    "user_id": 1,
+
+    "title": "Iure velit aut voluptatem rerum.",
+
+    "body": "Vero accusamus distinctio est quae optio qui. Quae iure nam laborum qui debitis consequatur quia non. Ea dolor est saepe eligendi natus.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/008866?text=accusamus",
+
+    "time_to_read": 7,
+
+    "is_published": 1,
+
+    "priority": 2,
+
+    "created_at": "2023-03-05 10:44:50",
+
+    "updated_at": "2023-03-05 10:44:50"
+
+    },
+
+    {
+
+    "id": 6,
+
+    "user_id": 3,
+
+    "title": "Est omnis est aut velit aut ut.",
+
+    "body": "Explicabo deleniti omnis dolor fugiat dolor totam. Voluptatem facere provident vel eum perspiciatis dolorem. Sed dolores magni et assumenda et.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/001144?text=recusandae",
+
+    "time_to_read": 7,
+
+    "is_published": 1,
+
+    "priority": 4,
+
+    "created_at": "2023-03-05 10:44:50",
+
+    "updated_at": "2023-03-05 10:44:50"
+
+    },
+
+    {
+
+    "id": 7,
+
+    "user_id": 3,
+
+    "title": "Consectetur asperiores ratione culpa ut aliquam id autem.",
+
+    "body": "Rem vel qui in eius. Aperiam perferendis amet minus provident nihil cumque. Voluptate optio distinctio ratione ut. Dolores illo quia debitis suscipit hic.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/005522?text=magni",
+
+    "time_to_read": 7,
+
+    "is_published": 1,
+
+    "priority": 4,
+
+    "created_at": "2023-03-05 10:44:50",
+
+    "updated_at": "2023-03-05 10:44:50"
+
+    },
+
+    {
+
+    "id": 8,
+
+    "user_id": 1,
+
+    "title": "Deleniti iure veniam omnis natus nulla repudiandae dolorem.",
+
+    "body": "Laborum aut suscipit quidem laudantium quas. Eos impedit sed eaque illo sed praesentium quas. Praesentium ea unde voluptatem ut. Itaque voluptatem et voluptas nulla.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/00cccc?text=dolorem",
+
+    "time_to_read": 9,
+
+    "is_published": 1,
+
+    "priority": 4,
+
+    "created_at": "2023-03-05 10:44:51",
+
+    "updated_at": "2023-03-05 10:44:51"
+
+    },
+
+    {
+
+    "id": 9,
+
+    "user_id": 1,
+
+    "title": "Tenetur autem voluptas maiores quas similique corporis tempora velit.",
+
+    "body": "Quaerat qui saepe architecto fuga quo repellat. Assumenda voluptatibus delectus aut laboriosam ut architecto omnis. Esse molestiae placeat dolore et doloribus.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/00aacc?text=nostrum",
+
+    "time_to_read": 1,
+
+    "is_published": 0,
+
+    "priority": 2,
+
+    "created_at": "2023-03-05 10:44:51",
+
+    "updated_at": "2023-03-05 10:44:51"
+
+    },
+
+    {
+
+    "id": 10,
+
+    "user_id": 1,
+
+    "title": "Delectus in voluptates dolores eos ut omnis omnis.",
+
+    "body": "Aut ab occaecati repellat laboriosam. Nihil maxime est est rerum. Sapiente ut molestiae error illum a ut provident omnis.",
+
+    "image_path": "https://via.placeholder.com/640x480.png/00dd66?text=voluptatem",
+
+    "time_to_read": 5,
+
+    "is_published": 0,
+
+    "priority": 3,
+
+    "created_at": "2023-03-05 10:44:51",
+
+    "updated_at": "2023-03-05 10:44:51"
+
+    }
+
+    ]
