@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('is_published')->default(true);
             $table->smallInteger('priority')->default(1);
             $table->timestamps();
+            $table->string('category')->nullable();
         });
     }
 

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Note;
@@ -26,9 +25,7 @@ class NotesController extends Controller
      */
     public function create()
     {
-
         return view('notes.create');
-
     }
 
     /**
@@ -36,35 +33,27 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-
-        // With the Model for Notes having fillable set we need to ensure
-
-        //that only valid value typres are accepted from the Browser for storing in the dB
-
         $request->validate([
-
             'title' => 'required|unique:notes|max:255',
             'body' => 'required',
             'image_path' => 'url',
             'time_to_read' => 'min:1|max:10',
             'priority' => 'min:1|max:5',
-
+            'category' => 'required', // Validate that category is required
         ]);
 
-        $note = Note::create([
+        $note = new Note(); // Create a new instance of the Note model
+        $note->user_id = $request->user()->id;
+        $note->title = $request->title;
+        $note->body = $request->body;
+        $note->image_path = $request->image_path;
+        $note->time_to_read = $request->time_to_read;
+        $note->is_published = $request->has('is_published') ? 1 : 0;
+        $note->priority = $request->priority;
+        $note->category = $request->category; // Assign category from the request
+        $note->save(); // Save the note
 
-            'user_id' => $request->user()->id,
-            'title' => $request->title,
-            'body' => $request->body,
-            'image_path' => $request->image_path,
-            'time_to_read' => $request->time_to_read,
-            'is_published' => $request->is_published === 'on' ? '1' : '0',
-            'priority' => $request->priority,
-
-        ]);
-
-        return to_route('notes.index')->with('success', 'Note added successfully');
-
+        return redirect()->route('notes.index')->with('success', 'Note added successfully');
     }
 
     /**
@@ -97,13 +86,10 @@ class NotesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
         $note = Note::findOrFail($id);
 
         if ($note->user_id != Auth::id()) {
-
             return abort(403);
-
         }
 
         $request->validate([
@@ -112,24 +98,19 @@ class NotesController extends Controller
             'image_path' => 'url',
             'time_to_read' => 'min:1|max:10',
             'priority' => 'min:1|max:5',
+            'category' => 'required', // Validate that category is required
         ]);
 
         $note->title = $request->input('title');
         $note->body = $request->input('body');
         $note->image_path = $request->input('image_path');
         $note->time_to_read = $request->input('time_to_read');
-
-        if ($request->has('is_published')) {
-            $note->is_published = 1;
-        } else {
-            $note->is_published = 0;
-        }
-
+        $note->is_published = $request->has('is_published') ? 1 : 0;
         $note->priority = $request->input('priority');
-        $note->update();
+        $note->category = $request->input('category'); // Update category from the request
+        $note->save(); // Save the updated note
 
-        return to_route('notes.show', $note)->with('success', 'Note updated successfully');
-
+        return redirect()->route('notes.show', $note)->with('success', 'Note updated successfully');
     }
 
     /**
@@ -137,6 +118,6 @@ class NotesController extends Controller
      */
     public function destroy(string $id)
     {
-        return 'Remove the Note with id = '.$id;
+        // Logic for deleting a note
     }
 }
