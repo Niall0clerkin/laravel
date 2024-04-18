@@ -116,8 +116,13 @@ class NotesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        // Logic for deleting a note
-    }
+    public function destroy($id)
+{
+    $note = Note::findOrFail($id);
+    // Update the 'deleted' field to true
+    $note->deleted = true;
+    $note->save();
+
+    return redirect()->route('notes.index')->with('success', 'Note deleted successfully');
+}
 }

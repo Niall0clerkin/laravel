@@ -16,6 +16,8 @@
 
     <div class="flex">
 
+
+
     <p class="opacity-70 sm:px-6">
 
     <strong>Created: </strong> {{ $note->created_at->diffForHumans() }}
@@ -35,6 +37,15 @@
     <h2 class="font-bold text-4xl">
 
     {{ $note->title }}
+
+    <!-- show.blade.php -->
+<form action="{{ route('notes.destroy', $note->id) }}" method="post">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn" style="background-color: red; color: white; border-radius: 12px;">   Delete Note   </button>
+</form>
+
+
 
     </h2>
 

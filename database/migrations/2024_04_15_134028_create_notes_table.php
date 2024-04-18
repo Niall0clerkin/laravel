@@ -22,6 +22,7 @@ return new class extends Migration
             $table->smallInteger('priority')->default(1);
             $table->timestamps();
             $table->string('category')->nullable();
+            $table->boolean('deleted')->default(false);
         });
     }
 

@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/notes', [NotesController::class, 'store'])->name('notes.store');
     Route::put('/notes/{id}', [NotesController::class, 'update'])->name('notes.update');
     Route::delete('/notes/{id}', [NotesController::class, 'destroy'])->name('notes.destroy');
+
 });
 
 require __DIR__.'/auth.php';
