@@ -22,7 +22,7 @@
 
     <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
 
-    <form action="{{ route('notes.update', $note) }}" method="post">
+    <form action="{{ route('vacancies.update', $note) }}" method="post">
 
     @csrf
 
@@ -54,7 +54,6 @@
 
     class="w-full mt-6">{{ @old('body', $note->body) }}</textarea>
 
-    <img src="{{ url($note->image_path) }}" alt="The stored image" width="500" id="image-preview">
 
     <p>Priority for this Note</p>
 

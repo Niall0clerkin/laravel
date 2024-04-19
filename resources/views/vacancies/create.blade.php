@@ -22,7 +22,7 @@
 
     <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
 
-    <form action="{{ route('notes.store') }}" method="post">
+    <form action="{{ route('vacancies.store') }}" method="post">
 
     @csrf
 

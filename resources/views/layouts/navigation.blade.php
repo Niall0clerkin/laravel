@@ -12,8 +12,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
+                        {{ __('Vacancies') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('vacancies.indexuser')" :active="request()->routeIs('vacancies.indexuser')">
+                        {{ __('My created Vacancies') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('vacancies.deletedindex')" :active="request()->routeIs('vacancies.deletedindex')">
+                        {{ __('My deleted Vacancies') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -5,27 +5,39 @@ use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class NotesController extends Controller
+class VacanciesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+public function indexUser()
+{
+    $user = Auth::user(); // Get the authenticated user
+    $notes = note::where('user_id', $user->id)->paginate(3); // Fetch vacancies associated with the authenticated user
+    return view('indexuser')->with('notes', $notes);
+}
+
+
     public function index()
     {
         $userId = Auth::id();
         $notes = Note::where('user_id', $userId)
+            ->where('deleted', false) // Filter out soft deleted notes
             ->latest('updated_at')
             ->paginate(3);
 
-        return view('notes.index')->with('notes', $notes);
+        return view('vacancies.index')->with('notes', $notes);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('notes.create');
+        return view('vacancies.create');
     }
 
     /**
@@ -53,7 +65,7 @@ class NotesController extends Controller
         $note->category = $request->category; // Assign category from the request
         $note->save(); // Save the note
 
-        return redirect()->route('notes.index')->with('success', 'Note added successfully');
+        return redirect()->route('vacancies.index')->with('success', 'Note added successfully');
     }
 
     /**
@@ -61,12 +73,11 @@ class NotesController extends Controller
      */
     public function show(string $id)
     {
-        $note = Note::where('id', $id)
-            ->where('user_id', Auth::id())
-            ->firstOrFail();
+        $note = Note::findOrFail($id);
 
-        return view('notes.show')->with('note', $note);
+        return view('vacancies.show')->with('note', $note);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +89,7 @@ class NotesController extends Controller
             return abort(403);
         }
 
-        return view('notes.edit')->with(['note' => $note]);
+        return view('vacancies.edit')->with(['note' => $note]);
     }
 
     /**
@@ -110,19 +121,34 @@ class NotesController extends Controller
         $note->category = $request->input('category'); // Update category from the request
         $note->save(); // Save the updated note
 
-        return redirect()->route('notes.show', $note)->with('success', 'Note updated successfully');
+        return redirect()->route('vacancies.show', $note)->with('success', 'Note updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
-{
-    $note = Note::findOrFail($id);
-    // Update the 'deleted' field to true
-    $note->deleted = true;
-    $note->save();
 
-    return redirect()->route('notes.index')->with('success', 'Note deleted successfully');
+    public function destroy($id)
+    {
+        $note = Note::findOrFail($id);
+        // Update the 'deleted' field to true
+        $note->deleted = true;
+        $note->save();
+
+        return redirect()->route('vacancies.index')->with('success', 'Note deleted successfully');
+    }
+
+
+public function addComment(Request $request, Note $note)
+{
+    // Validation for comment creation
+
+    // Create the comment
+    $comment = $note->comments()->create([
+        'user_id' => $request->user()->id,
+        'body' => $request->body,
+    ]);
+
+    return back()->with('success', 'Comment added successfully');
 }
 }
