@@ -1,20 +1,12 @@
-
-
 <x-app-layout>
-
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Notes') }}
+            {{ __('My Created Notes') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Button to create a new note -->
-            <div class="mb-4">
-                <a href="{{ route('vacancies.create') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Create Vacancy</a>
-            </div>
-
             <!-- List of notes -->
             @forelse ($notes as $note)
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">

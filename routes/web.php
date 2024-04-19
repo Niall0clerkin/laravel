@@ -14,11 +14,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/vacancies/indexuser', function () {
-    return view('vacancies.indexuser');
-})->name('vacancies.indexuser');
 
-Route::get('/vacancies/deletedindex',)->name('vacancies.deletedindex');
+Route::post('/vacancies/{id}/reupload', [VacanciesController::class, 'reupload'])->name('vacancies.reupload');
+
+route::get('/vacancies/deletedindex', [VacanciesController::class, 'deletedIndex'])->name('vacancies.deletedindex');
+
+
+Route::get('/userindex', [VacanciesController::class, 'indexUser'])->name('vacancies.userindex');
+
 
 
 

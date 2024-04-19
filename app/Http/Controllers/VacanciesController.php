@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class VacanciesController extends Controller
 {
@@ -11,24 +13,49 @@ class VacanciesController extends Controller
      * Display a listing of the resource.
      */
 
+
 public function indexUser()
 {
-    $user = Auth::user(); // Get the authenticated user
-    $notes = note::where('user_id', $user->id)->paginate(3); // Fetch vacancies associated with the authenticated user
-    return view('indexuser')->with('notes', $notes);
+    // Get the authenticated user
+    $user = Auth::user();
+
+    // Fetch notes associated with the authenticated user
+    $notes = Note::where('user_id', $user->id)->paginate(10);
+
+    // Return the view with the notes
+    return view('vacancies.indexuser')->with('notes', $notes);
 }
 
 
-    public function index()
-    {
-        $userId = Auth::id();
-        $notes = Note::where('user_id', $userId)
-            ->where('deleted', false) // Filter out soft deleted notes
-            ->latest('updated_at')
-            ->paginate(3);
+public function deletedIndex()
+{
+    // Get the authenticated user
+    $user = Auth::user();
 
-        return view('vacancies.index')->with('notes', $notes);
-    }
+    // Fetch deleted notes associated with the authenticated user
+    $deletedNotes = Note::where('user_id', $user->id)
+                        ->where('deleted', true)
+                        ->get();
+
+    return view('vacancies.deletedindex', compact('deletedNotes'));
+}
+
+
+
+
+
+
+public function index()
+{
+    $userId = Auth::id();
+    $notes = Note::where('user_id', $userId)
+        ->where('deleted', false) // Filter out soft deleted notes
+        ->latest('updated_at')
+        ->paginate(3);
+
+    return view('vacancies.index')->with('notes', $notes);
+}
+
 
 
 
@@ -71,13 +98,25 @@ public function indexUser()
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $note = Note::findOrFail($id);
+    public function show($id)
+{
+    $note = Note::findOrFail($id);
+    $isDeleted = $note->deleted;
 
-        return view('vacancies.show')->with('note', $note);
-    }
+    return view('vacancies.show', compact('note', 'isDeleted'));
+}
 
+
+public function reupload($id)
+{
+    $note = Note::findOrFail($id);
+
+    // Update the 'deleted' field to false to mark the note as not deleted
+    $note->deleted = false;
+    $note->save();
+
+    return Redirect::route('vacancies.show', $note->id)->with('success', 'Note re-uploaded successfully');
+}
 
     /**
      * Show the form for editing the specified resource.

@@ -16,9 +16,10 @@
                         {{ __('Vacancies') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('vacancies.indexuser')" :active="request()->routeIs('vacancies.indexuser')">
-                        {{ __('My created Vacancies') }}
+                    <x-nav-link :href="route('vacancies.userindex')" :active="request()->routeIs('vacancies.userindex')">
+                        {{ __('My Created Vacancies') }}
                     </x-nav-link>
+
 
                     <x-nav-link :href="route('vacancies.deletedindex')" :active="request()->routeIs('vacancies.deletedindex')">
                         {{ __('My deleted Vacancies') }}
