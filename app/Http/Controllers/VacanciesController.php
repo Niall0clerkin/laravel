@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use App\Models\Note;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Http\Request;
@@ -45,7 +46,8 @@ public function deletedIndex()
 
 public function index()
 {
-    $notes = Note::paginate(10);
+    $notes = Note::withTotalVisitCount()
+    ->paginate(10);
    
 
 
@@ -101,7 +103,7 @@ public function index()
     $note = Note::findOrFail($id);
     $isDeleted = $note->deleted;
   
-
+$note->visit()->customInterval(now()->addSeconds(30))->withIp()->withUser();
     return view('vacancies.show', compact('note', 'isDeleted'));
 }
 

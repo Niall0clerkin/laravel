@@ -21,8 +21,8 @@
                 <p class="mt-2">
                     <span><img src="{{ $note->image_path }}" width="160"></span>
                 </p>
-                <span class="block mt-4 text-sm opacity-70">{{ $note->updated_at->diffForHumans() }}</span>
-                <p>Visits: {{ $note->visits }}</p>
+                <span class="block mt-4 text-sm opacity-70">{{ $note->updated_at->diffForHumans() }} visits:{{$note->visit_count_total}}</span>
+             
             </div>
             @empty
             <p>You have no notes yet.</p>
