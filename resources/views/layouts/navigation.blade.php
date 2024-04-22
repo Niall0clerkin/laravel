@@ -13,16 +13,18 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
-                        {{ __('Vacancies') }}
+                     {{ __('Vacancies') }}
+                    <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1">{{ $vacanciesCount }}</span>
                     </x-nav-link>
 
                     <x-nav-link :href="route('vacancies.userindex')" :active="request()->routeIs('vacancies.userindex')">
                         {{ __('My Created Vacancies') }}
+                        <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1">{{ $myCreatedVacanciesCount }}</span>
                     </x-nav-link>
 
-
                     <x-nav-link :href="route('vacancies.deletedindex')" :active="request()->routeIs('vacancies.deletedindex')">
-                        {{ __('My deleted Vacancies') }}
+                        {{ __('My Deleted Vacancies') }}
+                        <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1">{{ $myDeletedVacanciesCount }}</span>
                     </x-nav-link>
                 </div>
             </div>

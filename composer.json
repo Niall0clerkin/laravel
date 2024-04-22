@@ -9,7 +9,9 @@
         "coderflexx/laravisit": "^2.0",
         "laravel/breeze": "^2.0",
         "laravel/framework": "^11.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.4",
+        "usamamuneerchaudhary/commentify": "^1.5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",

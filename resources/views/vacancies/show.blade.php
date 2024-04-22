@@ -47,7 +47,7 @@
     <h3 class="font-bold text-xl mb-4">Comments</h3>
     
     <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
-    <h3 class="font-bold text-xl mb-4">Comments</h3>
+    
     
     <!-- Check if there are any comments -->
     @if ($note->comments->count() > 0)

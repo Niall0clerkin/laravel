@@ -44,16 +44,17 @@ public function deletedIndex()
 
 
 
+
+
 public function index()
 {
-    $notes = Note::withTotalVisitCount()
-    ->paginate(10);
-   
+    $vacanciesCount = Note::where('deleted', false)->count();
+    $myCreatedVacanciesCount = Note::where('user_id', Auth::id())->count();
+    $myDeletedVacanciesCount = Note::where('user_id', Auth::id())->where('deleted', true)->count();
 
-
-
-    return view('vacancies.index', compact('notes'));
+    return view('your_view', compact('vacanciesCount', 'myCreatedVacanciesCount', 'myDeletedVacanciesCount'));
 }
+
 
 
 
