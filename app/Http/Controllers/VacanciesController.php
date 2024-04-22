@@ -2,17 +2,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
-
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class VacanciesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-
+    
+   
 
 public function indexUser()
 {
@@ -47,14 +45,14 @@ public function deletedIndex()
 
 public function index()
 {
-    $userId = Auth::id();
-    $notes = Note::where('user_id', $userId)
-        ->where('deleted', false) // Filter out soft deleted notes
-        ->latest('updated_at')
-        ->paginate(3);
+    $notes = Note::paginate(10);
+   
 
-    return view('vacancies.index')->with('notes', $notes);
+
+
+    return view('vacancies.index', compact('notes'));
 }
+
 
 
 
@@ -102,6 +100,7 @@ public function index()
 {
     $note = Note::findOrFail($id);
     $isDeleted = $note->deleted;
+  
 
     return view('vacancies.show', compact('note', 'isDeleted'));
 }
@@ -137,29 +136,37 @@ public function reupload($id)
     public function update(Request $request, string $id)
     {
         $note = Note::findOrFail($id);
-
+    
         if ($note->user_id != Auth::id()) {
             return abort(403);
         }
-
+    
         $request->validate([
             'title' => 'required|max:255|unique:notes,title,'.$id,
             'body' => 'required',
-            'image_path' => 'url',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Add validation for the image
             'time_to_read' => 'min:1|max:10',
             'priority' => 'min:1|max:5',
             'category' => 'required', // Validate that category is required
         ]);
-
+    
         $note->title = $request->input('title');
         $note->body = $request->input('body');
-        $note->image_path = $request->input('image_path');
         $note->time_to_read = $request->input('time_to_read');
         $note->is_published = $request->has('is_published') ? 1 : 0;
         $note->priority = $request->input('priority');
-        $note->category = $request->input('category'); // Update category from the request
+        $note->category = $request->input('category');
+    
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $note->image_path = 'images/' . $imageName;
+        }
+    
         $note->save(); // Save the updated note
-
+    
         return redirect()->route('vacancies.show', $note)->with('success', 'Note updated successfully');
     }
 

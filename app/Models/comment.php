@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function note()
+    /**
+     * Get the user that owns the comment.
+     */
+    public function user()
     {
-        return $this->belongsTo(Note::class);
+        return $this->belongsTo(User::class);
     }
 }
