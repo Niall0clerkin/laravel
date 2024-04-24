@@ -7,53 +7,91 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class VacanciesController extends Controller
 {
     
    
 
-public function indexUser()
-{
-    // Get the authenticated user
-    $user = Auth::user();
+    public function indexUser()
+    {
+        // Get the authenticated user
+        $user = Auth::user();
+    
+        // Fetch notes associated with the authenticated user
+        $notes = Note::where('user_id', $user->id)->paginate(10);
+    
+        $noteVisitCounts = [];
+        foreach ($notes as $note) {
+            $visitCount = DB::table('laravisits')
+                ->where('visitable_id', $note->id)
+                ->where('visitable_type', Note::class)
+                ->count();
+            $noteVisitCounts[$note->id] = $visitCount;
+        }
+       
+        // Return the view with the notes and visit counts
+        return view('vacancies.indexuser')->with(compact('notes', 'noteVisitCounts'));
+    }
+    
+    public function deletedIndex()
+    {
+        // Get the authenticated user
+        $user = Auth::user();
+    
+        // Fetch deleted notes associated with the authenticated user
+        $deletedNotes = Note::where('user_id', $user->id)
+                            ->where('deleted', true)
+                            ->get();
+    
+        $noteVisitCounts = [];
+        foreach ($deletedNotes as $note) {
+            $visitCount = DB::table('laravisits')
+                ->where('visitable_id', $note->id)
+                ->where('visitable_type', Note::class)
+                ->count();
+            $noteVisitCounts[$note->id] = $visitCount;
+        }
+     
+    
+        // Return the view with the deleted notes and visit counts
+        return view('vacancies.deletedindex', compact('deletedNotes', 'noteVisitCounts'));
+    }
+    
 
-    // Fetch notes associated with the authenticated user
-    $notes = Note::where('user_id', $user->id)->paginate(10);
-
-    // Return the view with the notes
-    return view('vacancies.indexuser')->with('notes', $notes);
-}
-
-
-public function deletedIndex()
-{
-    // Get the authenticated user
-    $user = Auth::user();
-
-    // Fetch deleted notes associated with the authenticated user
-    $deletedNotes = Note::where('user_id', $user->id)
-                        ->where('deleted', true)
-                        ->get();
-
-    return view('vacancies.deletedindex', compact('deletedNotes'));
-}
 
 
 
+    public function index(Request $request)
+    {
+        $notes = Note::where('deleted', false)->paginate(10);
+    
+        $noteVisitCounts = [];
+        foreach ($notes as $note) {
+            $visitCount = DB::table('laravisits')
+                ->where('visitable_id', $note->id)
+                ->where('visitable_type', Note::class)
+                ->count();
+            $noteVisitCounts[$note->id] = $visitCount;
+        }
+    
+        // Fetch categories only for notes where deleted is false
+        $categories = Note::where('deleted', false)
+                        ->distinct('category')
+                        ->pluck('category')
+                        ->toArray();
+    
+        // Query notes based on the category filter, if provided
+        $query = Note::query();
+        if ($request->has('category')) {
+            $query->where('category', $request->category);
+        }
+        $notes = $query->paginate(10);
+    
+        return view('vacancies.index', compact('notes', 'noteVisitCounts', 'categories'));
+    }
 
-
-
-
-
-public function index()
-{
-    $vacanciesCount = Note::where('deleted', false)->count();
-    $myCreatedVacanciesCount = Note::where('user_id', Auth::id())->count();
-    $myDeletedVacanciesCount = Note::where('user_id', Auth::id())->where('deleted', true)->count();
-
-    return view('your_view', compact('vacanciesCount', 'myCreatedVacanciesCount', 'myDeletedVacanciesCount'));
-}
 
 
 

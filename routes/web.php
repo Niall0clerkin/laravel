@@ -23,13 +23,13 @@ route::get('/vacancies/deletedindex', [VacanciesController::class, 'deletedIndex
 Route::get('/userindex', [VacanciesController::class, 'indexUser'])->name('vacancies.userindex');
 
 
-
+Route::resource('/vacancies', VacanciesController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('/vacancies', VacanciesController::class);
+    
     Route::post('/notes/{note}/comments', [CommentsController::class, 'store'])->name('comments.store');
     Route::delete('/comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
 

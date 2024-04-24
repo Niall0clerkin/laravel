@@ -1,8 +1,11 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Created Notes') }}
-        </h2>
+<x-slot name="header">
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('My created vacancies') }}
+            </h2>
+           
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -17,7 +20,7 @@
                     <span><img src="{{ $note->image_path }}" width="160"></span>
                 </p>
                 <span class="block mt-6 text-sm opacity-70">{{ $note->updated_at->diffForHumans() }} </span>
-                <span class="block mt-4 text-sm opacity-70"> visits:{{$note->visit_count_total}}</span>
+                <span class="block mt-4 text-sm opacity-70"> visits:{{$noteVisitCounts[$note->id] ?? 0}}</span>
             </div>
             @empty
             <p>You have no notes yet.</p>

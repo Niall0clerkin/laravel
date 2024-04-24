@@ -27,4 +27,7 @@ class note extends Model implements CanVisit
 {
     return $this->hasMany(Comment::class);
 }
+
+
+
 }

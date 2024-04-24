@@ -5,63 +5,83 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
+                <a href="/vacancies">
+                <img src="{{ asset('images/logo.png') }}" alt="My Custom Logo"alt="Logo" width="100" height="50">
+                </a>
+
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
-                     {{ __('Vacancies') }}
-                    <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1">{{ $vacanciesCount }}</span>
-                    </x-nav-link>
+    @guest <!-- Show only to non-authenticated users -->
+    <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
+        {{ __('Vacancies') }}
+        <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1 ml-1">{{ \App\Models\Note::where('deleted', false)->count() }}</span>
+    </x-nav-link>
+    @endguest
 
-                    <x-nav-link :href="route('vacancies.userindex')" :active="request()->routeIs('vacancies.userindex')">
-                        {{ __('My Created Vacancies') }}
-                        <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1">{{ $myCreatedVacanciesCount }}</span>
-                    </x-nav-link>
+    @auth <!-- Show only to authenticated users -->
+    <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
+        {{ __('Vacancies') }}
+        <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1 ml-1">{{ \App\Models\Note::where('deleted', false)->count() }}</span>
+    </x-nav-link>
 
-                    <x-nav-link :href="route('vacancies.deletedindex')" :active="request()->routeIs('vacancies.deletedindex')">
-                        {{ __('My Deleted Vacancies') }}
-                        <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1">{{ $myDeletedVacanciesCount }}</span>
-                    </x-nav-link>
-                </div>
-            </div>
+    <x-nav-link :href="route('vacancies.userindex')" :active="request()->routeIs('vacancies.userindex')">
+        {{ __('My Created Vacancies') }}
+        <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1 ml-1">{{ \App\Models\Note::where('user_id', Auth::id())->count() }}</span>
+    </x-nav-link>
+
+    <x-nav-link :href="route('vacancies.deletedindex')" :active="request()->routeIs('vacancies.deletedindex')">
+        {{ __('My Deleted Vacancies') }}
+        <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1 ml-1">{{ \App\Models\Note::where('user_id', Auth::id())->where('deleted', true)->count() }}</span>
+    </x-nav-link>
+    @endauth
+</div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+    @guest
+    <!-- Show login button for non-authenticated users -->
 
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
+    <div class="flex">
+    <a href="{{ route('login') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mr-4">Login</a>
+    <a href="{{ route('register') }}" class="inline-block bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-600">Register</a>
+    </div>
+    @endguest
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+    @auth
+    <!-- Show dropdown menu for authenticated users -->
+    <x-dropdown align="right" width="48">
+        <x-slot name="trigger">
+            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                <div>{{ Auth::user()->name }}</div>
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
+                <div class="ms-1">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+            </button>
+        </x-slot>
+
+        <x-slot name="content">
+            <x-dropdown-link :href="route('profile.edit')">
+                {{ __('Profile') }}
+            </x-dropdown-link>
+
+            <!-- Authentication -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-dropdown-link>
+            </form>
+        </x-slot>
+    </x-dropdown>
+    @endauth
+</div>
+
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
@@ -84,11 +104,15 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
+        @auth
+    <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="px-4">
+            <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+            <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+        </div>
+    </div>
+@endauth
+
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
