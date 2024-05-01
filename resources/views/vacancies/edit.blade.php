@@ -15,9 +15,22 @@
                     @csrf
                     @method('PUT')
 
-                    <input type="text" name="title" field="title" class="w-full" autocomplete="off" value="{{ @old('title', $note->title) }}">
+                    <p>Title</p>
 
-                    <textarea id="body" name="body" rows="10" field="text" class="w-full mt-6">{{ @old('body', $note->body) }}</textarea>
+                    <input type="text" name="title" field="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" autocomplete="off" value="{{ @old('title', $note->title) }}">
+
+                    <p>Skills</p>
+                    <input
+                        type="text"
+                        name="skills"
+                        placeholder="Enter skills"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        autocomplete="off"
+                        value="{{ old('skills') }}"
+                    >
+
+                    <p>About role</p>
+                    <textarea id="body" name="body" rows="10" field="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ @old('body', $note->body) }}</textarea>
 
                     <p>Priority for this Note</p>
                     <select name="priority" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">

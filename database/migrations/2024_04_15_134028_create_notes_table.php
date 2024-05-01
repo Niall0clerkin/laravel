@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('title')->unique();
             $table->longText('body');
+            $table->longText('skills')->nullable();;
             $table->string('image_path')->nullable();
             $table->smallInteger('time_to_read')->default(2);
             $table->boolean('is_published')->default(true);

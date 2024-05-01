@@ -1,0 +1,123 @@
+[
+    {
+      "user_id": "1",
+      "title": "Junior Laravel Developer",
+      "body": "We are looking for a junior Laravel developer to join our team. Responsibilities include building and maintaining web applications using Laravel framework.",
+      "skills": "PHP, Laravel, MySQL, HTML, CSS, JavaScript",
+      "category": "Development",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Junior+Laravel+Developer"
+    },
+    {
+      "user_id": "3",
+      "title": "Intermediate Laravel Developer",
+      "body": "We are seeking an intermediate Laravel developer to work on various projects. The ideal candidate should have experience with Laravel, Vue.js, and RESTful APIs.",
+      "skills": "PHP, Laravel , Vue.js, MySQL, RESTful APIs",
+      "category": "Development",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Intermediate+Laravel+Developer"
+    },
+    {
+      "user_id": "4",
+      "title": "Experienced Laravel Developer",
+      "body": "We are hiring an experienced Laravel developer to lead our development team. The candidate should have extensive experience with Laravel, including building complex web applications.",
+      "skills": "PHP, Laravel, MySQL, RESTful APIs, Git",
+      "category": "Development",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Experienced+Laravel+Developer"
+    },
+    {
+      "user_id": "1",
+      "title": "Full Stack Laravel Developer",
+      "body": "We are looking for a full stack Laravel developer to work on both front-end and back-end development tasks. Experience with Vue.js or React.js is a plus.",
+      "skills": "PHP, Laravel, Vue.js, React.js, MySQL, HTML, CSS, JavaScript",
+      "category": "Development",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Full+Stack+Laravel+Developer"
+    },
+    {
+      "user_id": "1",
+      "title": "Laravel Backend Developer",
+      "body": "We are seeking a Laravel backend developer to work on server-side logic and integration of third-party APIs. Knowledge of RESTful APIs is required.",
+      "skills": "PHP, Laravel, MySQL, RESTful APIs, Unit Testing",
+      "category": "Development",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+Backend+Developer"
+    },
+    {
+      "user_id": "5",
+      "title": "Laravel API Developer",
+      "body": "We have an opening for a Laravel API developer to design and develop RESTful APIs for our web and mobile applications. Proficiency in Laravel and API design is required.",
+      "skills": "PHP, Laravel, RESTful APIs, MySQL, API Design",
+      "category": "Development",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+API+Developer"
+    },
+    {
+      "user_id": "2",
+      "title": "Laravel Frontend Developer",
+      "body": "We are hiring a Laravel frontend developer to implement user interfaces using HTML, CSS, and JavaScript. Experience with Vue.js or React.js is preferred.",
+      "skills": "PHP, Laravel, HTML, CSS, JavaScript, Vue.js, React.js",
+      "category": "Development",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+Frontend+Developer"
+    },
+    {
+      "user_id": "1",
+      "title": "Laravel Project Manager",
+      "body": "We are looking for a project manager with experience in managing Laravel development projects. Responsibilities include project planning, resource allocation, and client communication.",
+      "skills": "Project Management, Laravel, Agile Methodologies, Scrum, Client Communication",
+      "category": "Management",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+Project+Manager"
+    },
+    {
+      "user_id": "3",
+      "title": "Laravel QA Engineer",
+      "body": "We are seeking a QA engineer with experience in testing Laravel applications. Responsibilities include writing and executing test cases, identifying bugs, and reporting issues.",
+      "skills": "Quality Assurance, Laravel, Testing, Bug Tracking",
+      "category": "Quality Assurance",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+QA+Engineer"
+    },
+    {
+      "user_id": "4",
+      "title": "Laravel DevOps Engineer",
+      "body": "We have an opening for a DevOps engineer with experience in deploying and managing Laravel applications. Responsibilities include setting up CI/CD pipelines, monitoring, and scaling infrastructure.",
+      "skills": "DevOps, Laravel, CI/CD, Docker, Kubernetes, AWS, Azure, Google Cloud",
+      "category": "DevOps",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+DevOps+Engineer"
+    },
+    {
+      "user_id": "1",
+      "title": "Laravel Database Administrator",
+      "body": "We are hiring a database administrator with expertise in managing MySQL databases for Laravel applications. Responsibilities include database design, optimization, and performance tuning.",
+      "skills": "Database Administration, MySQL, Laravel, Database Optimization, Performance Tuning",
+      "category": "Database Administration",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+Database+Administrator"
+    },
+    {
+      "user_id": "5",
+      "title": "Laravel UI/UX Designer",
+      "body": "We are seeking a UI/UX designer with experience in designing user interfaces for Laravel applications. Responsibilities include wireframing, prototyping, and creating UI components.",
+      "skills": "UI Design, UX Design, Laravel, Adobe XD, sketch, Figma",
+      "category": "Design",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+UI/UX+Designer"
+    },
+    {
+      "user_id": "3",
+      "title": "Laravel Technical Writer",
+      "body": "We have an opening for a technical writer with experience in documenting Laravel projects. Responsibilities include writing technical documentation, tutorials, and API references.",
+      "skills": "Technical Writing, Laravel, Documentation, API Documentation",
+      "category": "Documentation",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+Technical+Writer"
+    },
+    {
+      "user_id": "5",
+      "title": "Laravel Support Engineer",
+      "body": "We are hiring a support engineer to provide technical support for Laravel applications. Responsibilities include troubleshooting, bug fixing, and assisting customers.",
+      "skills": "Technical Support, Laravel, Troubleshooting, Customer Service",
+      "category": "Support",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+Support+Engineer"
+    },
+    {
+      "user_id": "1",
+      "title": "Laravel Trainer",
+      "body": "We are seeking a trainer with expertise in teaching Laravel development. Responsibilities include conducting training sessions, creating educational materials, and mentoring students.",
+      "skills": "Training, Laravel, Mentoring, Educational Content Creation",
+      "category": "Training",
+      "image_path": "https://via.placeholder.com/640x480.png/0099ff?text=Laravel+Trainer"
+    }
+  ]
+  

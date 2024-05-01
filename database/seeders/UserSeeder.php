@@ -2,35 +2,34 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class UserSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
-
+     * Run the database seeds.
      *
-
      * @return void
      */
     public function run()
     {
+ 
+        $json = file_get_contents(base_path('users.json'));
+        $data = json_decode($json, true);
 
-        User::create([
+        
+        foreach ($data as $user) {
+            User::create([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'password' => Hash::make($user['password']),
+                'is_superuser' => $user['is_superuser'] ?? false,
+                'email_verified_at' => $user['email_verified_at'] ?? now(),
+            ]);
+        }
 
-            'name' => 'Peter Nicholl',
-
-            'email' => 'pete@abc.com',
-
-            'password' => Hash::make('qwerty1234'),
-
-            'email_verified_at' => now(),
-
-        ]);
-
-        User::factory()->count(2)->create();
-
+        
     }
 }

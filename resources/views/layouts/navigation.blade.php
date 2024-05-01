@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
+               
                 <div class="shrink-0 flex items-center">
                 <a href="/vacancies">
                 <img src="{{ asset('images/logo.png') }}" alt="My Custom Logo"alt="Logo" width="100" height="50">
@@ -11,16 +11,16 @@
 
                 </div>
 
-                <!-- Navigation Links -->
+               <!-- NA links  -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-    @guest <!-- Show only to non-authenticated users -->
+    @guest 
     <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
         {{ __('Vacancies') }}
         <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1 ml-1">{{ \App\Models\Note::where('deleted', false)->count() }}</span>
     </x-nav-link>
     @endguest
 
-    @auth <!-- Show only to authenticated users -->
+    @auth 
     <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
         {{ __('Vacancies') }}
         <span class="text-xs bg-gray-200 text-gray-600 rounded-full px-2 py-1 ml-1">{{ \App\Models\Note::where('deleted', false)->count() }}</span>
@@ -38,10 +38,10 @@
     @endauth
 </div>
 
-            <!-- Settings Dropdown -->
+            
             <div class="hidden sm:flex sm:items-center sm:ms-6">
     @guest
-    <!-- Show login button for non-authenticated users -->
+
 
 
     <div class="flex">
@@ -51,7 +51,7 @@
     @endguest
 
     @auth
-    <!-- Show dropdown menu for authenticated users -->
+  
     <x-dropdown align="right" width="48">
         <x-slot name="trigger">
             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -70,7 +70,7 @@
                 {{ __('Profile') }}
             </x-dropdown-link>
 
-            <!-- Authentication -->
+         
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
@@ -83,7 +83,6 @@
 </div>
 
 
-            <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -95,7 +94,7 @@
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
+ 
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -103,7 +102,7 @@
             </x-responsive-nav-link>
         </div>
 
-        <!-- Responsive Settings Options -->
+    
         @auth
     <div class="pt-4 pb-1 border-t border-gray-200">
         <div class="px-4">
@@ -119,7 +118,7 @@
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
-                <!-- Authentication -->
+             
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 

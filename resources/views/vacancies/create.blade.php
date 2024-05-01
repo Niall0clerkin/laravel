@@ -14,7 +14,7 @@
                                 <div class="alert-icon flex items-center bg-red-100 border-2 border-red-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
                                     <span class="text-red-500">
                                         <svg fill="currentColor" viewBox="0 0 20 20" class="h-6 w-6">
-                                            <!-- SVG content -->
+                                         
                                         </svg>
                                     </span>
                                 </div>
@@ -33,25 +33,40 @@
                 <form action="{{ route('vacancies.store') }}" method="post">
                     @csrf
 
+               
+                    <p>Title</p>
                     <input
                         type="text"
                         name="title"
                         field="title"
                         placeholder="Title"
-                        class="w-full"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         autocomplete="off"
                         value="{{ @old('title') }}"
                     >
+  
+                    <p>Skills</p>
+                    <input
+                        type="text"
+                        name="skills"
+                        placeholder="Enter skills"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        autocomplete="off"
+                        value="{{ old('skills') }}"
+                    >
 
+    
+                    <p>About role</p>
                     <textarea
                         id="body"
                         name="body"
                         rows="10"
                         field="text"
                         placeholder="Start typing your note here..."
-                        class="w-full mt-6">{{ @old('body') }}
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ @old('body') }}
                     </textarea>
 
+           
                     <p>Priority for this Note</p>
 
                     <select name="priority"
@@ -63,9 +78,11 @@
                         <option value="5">5</option>
                     </select>
 
+                  
                     <p>Category</p>
                     <input type="text" name="category" placeholder="Type category here" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
+                  
                     <p>Estimated Time (in Minutes) to Read this Note</p>
 
                     <select name="time_to_read"

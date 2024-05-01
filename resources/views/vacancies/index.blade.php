@@ -33,6 +33,7 @@
             <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
                 <h2 class="font-bold text-2xl">
                     <a href="{{ route('vacancies.show', $note) }}">{{ $note->title }}</a>
+                    <span class="block mt-6 text-sm ">Skills for job: {{$note->skills }} </span>
                 </h2>
                 <p class="mt-2">
                     <span><img src="{{ $note->image_path }}" width="160"></span>

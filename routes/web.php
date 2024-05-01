@@ -6,12 +6,12 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    DebugBar::info('Showing the Message!');
-    return view('welcome');
+DebugBar::info('Showing the Message!');
+return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 
@@ -22,18 +22,15 @@ route::get('/vacancies/deletedindex', [VacanciesController::class, 'deletedIndex
 
 Route::get('/userindex', [VacanciesController::class, 'indexUser'])->name('vacancies.userindex');
 
-
 Route::resource('/vacancies', VacanciesController::class);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
-    Route::post('/notes/{note}/comments', [CommentsController::class, 'store'])->name('comments.store');
-    Route::delete('/comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
-
-
+Route::post('/notes/{note}/comments', [CommentsController::class, 'store'])->name('comments.store');
+Route::delete('/comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
 });
 
 require __DIR__.'/auth.php';

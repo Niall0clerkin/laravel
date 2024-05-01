@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Niall_8262",
+        "email": "Clerkin-N5@ulster.ac.uk",
+        "password": "password1234",
+        "email_verified_at": "2024-04-25 12:00:00"
+    },
+
+    {
+        "name": "ben22",
+        "email": "ben@ulster.ac.uk",
+        "password": "password",
+        "email_verified_at": "2024-04-25 12:00:00"
+    },
+
+    {
+        "name": "john44",
+        "email": "john@ulster.ac.uk",
+        "password": "password",
+        "email_verified_at": "2024-04-25 12:00:00"
+    },
+    
+    {
+        "name": "rice88",
+        "email": "rice@ulster.ac.uk",
+        "password": "password",
+        "email_verified_at": "2024-04-25 12:00:00"
+    },
+
+    {
+        "name": "sean55",
+        "email": "s55@ulster.ac.uk",
+        "password": "password",
+        "email_verified_at": "2024-04-25 12:00:00"
+    },
+    
+    {
+        "name": "lilylil",
+        "email": "lil@ulster.ac.uk",
+        "password": "password",
+        "email_verified_at": "2024-04-25 12:00:00"
+    },
+    
+    {
+        "name": "monny99",
+        "email": "mon@ulster.ac.uk",
+        "password": "password",
+        "email_verified_at": "2024-04-25 12:00:00"
+    },
+
+    {
+        "name": "admin_Clerkin",
+        "email": "admin@laraveljobs-app.com",
+        "password": "superuser1234",
+        "is_superuser": true,
+        "email_verified_at": "2024-04-25 12:00:00"
+    }
+]
